@@ -1,5 +1,7 @@
 # Online Retail Transaction Analysis
 
+# ![CI logo] (https://codeinstitute. s3.amazonaws. com/fullstack/ci_logo_small. png)
+
 ## Overview
 This project analyses real transactional data from an online retailer using **Online Retail.csv**.  
 The dataset contains hundreds of thousands of purchase transactions, including product information, pricing, customer IDs and timestamps.
@@ -159,3 +161,6 @@ online_retail_project/
     │   └── Online Retail.csv
     └── clean/
         └── online_retail_clean.csv
+
+
+[def]: https://codeinstitute.net/
