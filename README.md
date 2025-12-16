@@ -149,6 +149,14 @@ Additional visuals include:
 
 ---
 
+## CI LOGO
+
+- Image file creates
+- CI Logo PNG added to image file
+- Code Institute Logo added to README file header
+
+---
+
 ## Project Structure
 
 ```text
