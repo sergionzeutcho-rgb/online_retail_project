@@ -5,7 +5,7 @@
 ## Project Purpose
 
 This project demonstrates how data analytics and Python-based ETL can support **evidence-based decision-making** in an online retail business.  
-By analysing transactional data from **Online Retail.csv**, the project uncovers patterns in customer behaviour, product performance, and sales trends, showing how analytics delivers real business value.
+By analysing transactional data from **Online_Retail.csv**, the project uncovers patterns in customer behaviour, product performance, and sales trends, showing how analytics delivers real business value.
 
 ---
 
@@ -30,7 +30,7 @@ Insights from this analysis support decisions in:
 ## Dataset
 
 **Raw source file:**  
-`data/raw/Online Retail.csv`
+`data/raw/Online_Retail.csv`
 
 **Columns:**
 
@@ -62,7 +62,7 @@ These hypotheses are tested and validated in the Jupyter Notebook.
 
 ### Extract
 
-- Loaded the raw dataset from `data/raw/Online Retail.csv` using:  
+- Loaded the raw dataset from `data/raw/Online_Retail.csv` using:  
   `pandas.read_csv(..., encoding="latin1")` to correctly handle special characters.
 
 ### Transform
