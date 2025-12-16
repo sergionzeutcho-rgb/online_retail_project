@@ -1,6 +1,6 @@
-# Online Retail Transaction Analysis
+[![Code Institute](image/code_institute_logo.png)](https://codeinstitute.net/)
 
-![CI logo] (https://codeinstitute. s3.amazonaws. com/fullstack/ci_logo_small. png)
+# Online Retail Transaction Analysis
 
 ## Overview
 This project analyses real transactional data from an online retailer using **Online Retail.csv**.  
