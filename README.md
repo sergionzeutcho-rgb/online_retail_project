@@ -166,8 +166,6 @@ Each visualisation directly answers a business question:
 - **seaborn** – Statistical visualisations  
   *Example:* `sns.boxplot(x=df['TotalValue'])`
 
-- **plotly** – Interactive charts (optional)  
-  *Example:* `px.bar(country_sales, x=country_sales.index, y=country_sales.values)`
 
 ---
 
