@@ -215,8 +215,6 @@ Potential enhancements include:
 ```text
 online_retail_project/
 │
-├── Online_Retail_Analysis.ipynb
-├── README.md
 │
 ├── data/
 │   ├── raw/
@@ -224,8 +222,14 @@ online_retail_project/
 │   └── clean/
 │       └── online_retail_clean.csv
 │
-└── versions/
-    └── v1/
+├── image/
+│
+├── versions/
+│    └── v1/
+│
+├── Online_Retail_Analysis.ipynb
+├── README.md
+└── requirements.txt
 ```
 
 ---
