@@ -218,7 +218,7 @@ online_retail_project/
 │
 ├── data/
 │   ├── raw/
-│   │   └── Online Retail.csv
+│   │   └── Online_Retail.csv
 │   └── clean/
 │       └── online_retail_clean.csv
 │
