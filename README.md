@@ -1,17 +1,23 @@
+
 [![Code Institute](image/code_institute_logo.png)](https://codeinstitute.net/)
 
 # Online Retail Transaction Analysis
+**Data Analytics & Python for Data Preparation – Capstone Project**
+
+---
 
 ## Project Purpose
 
 This project demonstrates how data analytics and Python-based ETL can support **evidence-based decision-making** in an online retail business.  
-By analysing transactional data from **Online_Retail.csv**, the project uncovers patterns in customer behaviour, product performance, and sales trends, showing how analytics delivers real business value.
+By analysing transactional data from **Online Retail.csv**, the project uncovers patterns in customer behaviour, product performance, and sales trends, showing how analytics delivers real business value.
+
+The project has been designed and implemented to meet all **Learning Outcomes (LO1–LO4)** for the Data Analytics and Python for Data Preparation capstone assessment.
 
 ---
 
 ## Business Case
 
-An online retailer wants to improve profitability by understanding:
+An online retailer wants to improve profitability and operational efficiency by understanding:
 
 - Which products drive the most revenue  
 - What customer groups purchase the most  
@@ -21,9 +27,21 @@ An online retailer wants to improve profitability by understanding:
 Insights from this analysis support decisions in:
 
 - Inventory management  
-- Pricing  
-- Marketing and promotions  
-- Customer retention strategies  
+- Pricing and promotion strategies  
+- Marketing and customer retention  
+- Geographic market prioritisation  
+
+---
+
+## Project Objectives
+
+1. Build a robust **ETL (Extract, Transform, Load)** pipeline using Python.
+2. Clean and prepare raw transactional data for reliable analysis.
+3. Perform exploratory data analysis (EDA) to uncover trends and patterns.
+4. Create multiple visualisation types to answer business questions.
+5. Segment customers using **RFM (Recency, Frequency, Monetary)** analysis.
+6. Validate business hypotheses using evidence-based insights.
+7. Demonstrate effective data management, documentation, and version control.
 
 ---
 
@@ -40,10 +58,10 @@ Insights from this analysis support decisions in:
 - `Quantity` – Quantity of product per transaction  
 - `InvoiceDate` – Date and time of invoice  
 - `UnitPrice` – Price per unit  
-- `CustomerID` – Customer identifier  
+- `CustomerID` – Anonymised customer identifier  
 - `Country` – Country of the customer  
 
-The dataset contains multiple months of transactions from an online retailer, with hundreds of thousands of rows.
+The dataset contains several hundred thousand transactions across multiple months and contains no personally identifiable information (PII).
 
 ---
 
@@ -54,7 +72,7 @@ The dataset contains multiple months of transactions from an online retailer, wi
 3. **H3:** Sales show clear monthly or seasonal patterns.  
 4. **H4:** Revenue varies significantly between countries.
 
-These hypotheses are tested and validated in the Jupyter Notebook.
+All hypotheses are tested and validated in the Jupyter Notebook.
 
 ---
 
@@ -69,17 +87,16 @@ These hypotheses are tested and validated in the Jupyter Notebook.
 
 The following cleaning and transformation steps were applied:
 
-- Removed **duplicate rows**  
-- Removed rows with **missing `Description` values**  
-- Converted `InvoiceDate` to a proper `datetime` format  
-- Removed rows where:
+- Removed duplicate rows  
+- Removed rows with missing `Description` values  
+- Converted `InvoiceDate` to datetime format  
+- Removed invalid transactions:
   - `Quantity <= 0`  
   - `UnitPrice <= 0`  
-  (These typically represent cancellations, refunds, or data entry errors.)  
 - Created a new feature:
   - `TotalValue = Quantity * UnitPrice`  
 - Extracted time-based features:
-  - `Year`, `Month`, `Day`, `Hour` from `InvoiceDate`
+  - `Year`, `Month`, `Day`, `Hour`  
 
 These steps ensure the dataset is clean, consistent, and suitable for reliable analysis.
 
@@ -88,7 +105,7 @@ These steps ensure the dataset is clean, consistent, and suitable for reliable a
 - Saved the cleaned dataset to:  
   `data/clean/online_retail_clean.csv`
 
-All analysis in the notebook is performed on this cleaned dataset.
+All analysis is performed on this cleaned dataset.
 
 ---
 
@@ -96,95 +113,102 @@ All analysis in the notebook is performed on this cleaned dataset.
 
 The Jupyter Notebook (`Online_Retail_Analysis.ipynb`) includes:
 
-- Initial data inspection and descriptive statistics  
-- Calculation of key KPIs:
+- Data inspection and descriptive statistics  
+- Key business KPIs:
   - Total revenue  
-  - Number of unique customers  
-  - Number of unique products  
-  - Number of countries  
-- Monthly time-series aggregation of revenue  
-- Product-level revenue analysis  
-- Country-level revenue comparison  
-- Customer segmentation using RFM (Recency, Frequency, Monetary) analysis  
-- Simple baseline revenue forecasting using rolling averages  
+  - Unique customers  
+  - Unique products  
+  - Countries represented  
+- Monthly revenue time-series analysis  
+- Product and country performance analysis  
+- Customer segmentation using RFM analysis  
+- Baseline revenue forecasting using rolling averages  
 
 ---
 
-## Visualisations
+## Visualisations Summary (Executive Perspective)
 
-At least four different plot types are included, each answering a specific business question:
+Each visualisation directly answers a business question:
 
-1. **Line Plot – Monthly Sales Trend**  
-   - *Business question:* When do sales peak, and are there seasonal patterns?
+1. **Monthly Revenue Trend (Line Plot)**  
+   Identifies seasonal patterns and revenue volatility to support forecasting and planning.
 
-2. **Bar Chart – Top 10 Products by Revenue**  
-   - *Business question:* Which products generate the most revenue?
+2. **Top 10 Products by Revenue (Bar Chart)**  
+   Highlights key revenue drivers for inventory and marketing prioritisation.
 
-3. **Bar Chart – Top 10 Countries by Revenue**  
-   - *Business question:* Which markets contribute the most to revenue?
+3. **Top 10 Countries by Revenue (Bar Chart)**  
+   Reveals geographic performance differences to guide international strategy.
 
-4. **Heatmap – Correlation Analysis**  
-   - *Business question:* How are Quantity, UnitPrice, and TotalValue related?
+4. **Correlation Heatmap**  
+   Explores relationships between quantity, price, and revenue to support pricing decisions.
 
-Additional visuals include:
+5. **Order Value Distribution (Boxplot)**  
+   Highlights variability and outliers in transaction values.
 
-- Boxplot of order values  
-- Histograms of RFM metrics  
-- Pareto curve showing cumulative revenue vs cumulative customers  
+6. **Pareto Curve & RFM Distributions**  
+   Confirms customer value concentration and supports targeted retention strategies.
 
 ---
 
 ## Tools & Technologies
 
-- **Programming Language:** Python  
-- **Libraries Used:**
-  - `pandas` – data manipulation and ETL  
-  - `numpy` – numerical operations  
-  - `matplotlib`, `seaborn` – data visualisation  
-  - `plotly` – interactive visualisations (optional)  
-- **Environment:** Jupyter Notebook  
+### Main Data Analysis Libraries
+
+- **pandas** – Data loading, cleaning, transformation  
+  *Example:* `df = pd.read_csv('data/raw/Online_Retail.csv')`
+
+- **numpy** – Numerical operations  
+  *Example:* `np.isclose(df['TotalValue'], df['Quantity'] * df['UnitPrice'])`
+
+- **matplotlib** – Line charts, bar charts, histograms  
+  *Example:* `plt.plot(monthly_sales.index, monthly_sales.values)`
+
+- **seaborn** – Statistical visualisations  
+  *Example:* `sns.boxplot(x=df['TotalValue'])`
+
+- **plotly** – Interactive charts (optional)  
+  *Example:* `px.bar(country_sales, x=country_sales.index, y=country_sales.values)`
 
 ---
 
 ## AI Integration
 
-AI tools were used to:
+AI tools were responsibly integrated to:
 
-- Assist with structuring the ETL pipeline  
-- Suggest appropriate visualisation techniques  
-- Help refine insight narratives and hypothesis explanations  
-- Support the organisation and clarity of the notebook and README  
+- Assist with ETL pipeline structuring
+- Suggest analytical techniques such as RFM segmentation
+- Refine visualisation choices and insight narratives
 
-All AI-assisted outputs were reviewed, adapted, and implemented manually.
+All AI-assisted outputs were reviewed and implemented manually to ensure originality.
 
 ---
 
 ## Ethical & Data Handling Considerations
 
-- Customer identifiers are anonymised numerical values; no personally identifiable information (PII) is included.  
-- Invalid or misleading records (e.g. negative quantities or prices) were removed to improve analytical accuracy.  
-- The dataset is used solely for educational and analytical purposes in this capstone project.
+- Customer identifiers are anonymised.
+- Invalid or misleading records were removed to improve accuracy.
+- The dataset is used solely for educational and analytical purposes.
 
 ---
 
 ## Limitations
 
-- Missing `CustomerID` values reduce full coverage in customer segmentation.  
-- Refunds and cancellations were excluded rather than analysed separately.  
-- The dataset represents a single time period, limiting long-term trend analysis.
+- Missing `CustomerID` values reduce segmentation coverage.
+- Refunds and cancellations were excluded rather than analysed separately.
+- Single-period data limits long-term forecasting accuracy.
 
-These limitations mean that results should be interpreted as indicative patterns rather than precise forecasts.
+Results should be interpreted as indicative patterns rather than precise predictions.
 
 ---
 
 ## Future Work
 
-Possible extensions to this project include:
+Potential enhancements include:
 
-- Advanced time-series forecasting (e.g. ARIMA, Prophet)  
-- Machine learning-based customer clustering  
-- Separate analysis of refunds and cancellations  
-- Development of an interactive dashboard for stakeholders  
+- Advanced forecasting models (ARIMA, Prophet)
+- Machine learning-based customer clustering
+- Separate refund and cancellation analysis
+- Interactive dashboard development
 
 ---
 
@@ -194,6 +218,7 @@ Possible extensions to this project include:
 online_retail_project/
 │
 ├── Online_Retail_Analysis.ipynb
+├── README.md
 │
 ├── data/
 │   ├── raw/
@@ -203,3 +228,21 @@ online_retail_project/
 │
 └── versions/
     └── v1/
+```
+
+---
+
+## Credits
+
+- Code Institute LMS  
+- GitHub Copilot  
+- ChatGPT (OpenAI)
+
+---
+
+## Acknowledgements
+
+Special thanks to:
+- **Vasi** for guidance on project structure and execution
+- **Can and Mo** for delivering valuable masterclasses
+- **CI Team** for the help and support 
