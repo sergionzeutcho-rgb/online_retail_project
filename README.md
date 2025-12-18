@@ -227,6 +227,9 @@ online_retail_project/
 ├── versions/
 │    └── v1/
 │
+├── .gitignore/
+│
+│
 ├── Online_Retail_Analysis.ipynb
 ├── README.md
 └── requirements.txt
