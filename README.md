@@ -11,7 +11,6 @@
 This project demonstrates how data analytics and Python-based ETL can support **evidence-based decision-making** in an online retail business.  
 By analysing transactional data from **Online Retail.csv**, the project uncovers patterns in customer behaviour, product performance, and sales trends, showing how analytics delivers real business value.
 
-The project has been designed and implemented to meet all **Learning Outcomes (LO1–LO4)** for the Data Analytics and Python for Data Preparation capstone assessment.
 
 ---
 
